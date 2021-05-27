@@ -81,6 +81,7 @@
             Range2: "#90a4ae",
             Range3: "#607d8b",
             Range4: "#37474f",
+            Range5: "#263238",
         }],
         Teal: [{
             Range1: "#b2dfdb",
@@ -2185,7 +2186,7 @@
         var RezagoVector = Object2Vector("RezagoSocial");
 
         //      Asignamos un color distinto para cada una de las regiones
-        var s1_range = [], s2_range = [], s3_range = [];
+        var s1_range = [], s2_range = [], s3_range = [], s4_range = [], s5_range = [];
 
         for(var i=0; i<DataGuanajuatoStates.length; i++){
             var RezagoData = DataGuanajuatoStates[i].RezagoSocial;
@@ -2196,6 +2197,10 @@
                 s2_range.push( DataGuanajuatoStates[i].id );
             else if ( RezagoData == "Medio" )
                 s3_range.push( DataGuanajuatoStates[i].id );
+            else if ( RezagoData == "Alto" )
+                s4_range.push( DataGuanajuatoStates[i].id );
+            else if ( RezagoData == "Muy Alto" )
+                s5_range.push( DataGuanajuatoStates[i].id );
         }
 
         /* 1er color */
@@ -2203,8 +2208,8 @@
         s1.name = "Muy bajo";
         s1.useGeodata = true;
         s1.include = s1_range;
-        s1.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range2 );
-        s1.fill = am4core.color( ColorPalette.Blue_Grey[0].Range2 );
+        s1.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range1 );
+        s1.fill = am4core.color( ColorPalette.Blue_Grey[0].Range1 );
 
         var pts1 = s1.mapPolygons.template;
         pts1.stroke = am4core.color("rgba(240, 240, 240, 0.4)");
@@ -2214,8 +2219,8 @@
         s2.name = "Bajo";
         s2.useGeodata = true;
         s2.include = s2_range;
-        s2.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range3 );
-        s2.fill = am4core.color( ColorPalette.Blue_Grey[0].Range3 );
+        s2.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range2 );
+        s2.fill = am4core.color( ColorPalette.Blue_Grey[0].Range2 );
 
         var pts2 = s2.mapPolygons.template;
         pts2.stroke = am4core.color("rgba(240, 240, 240, 0.4)");
@@ -2225,11 +2230,34 @@
         s3.name = "Medio";
         s3.useGeodata = true;
         s3.include = s3_range;
-        s3.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range4 );
-        s3.fill = am4core.color( ColorPalette.Blue_Grey[0].Range4 );
+        s3.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range3 );
+        s3.fill = am4core.color( ColorPalette.Blue_Grey[0].Range3 );
 
         var pts3 = s3.mapPolygons.template;
         pts3.stroke = am4core.color("rgba(240, 240, 240, 0.4)");
+
+        /* 4to color */
+        var s4 = chart.series.push(new am4maps.MapPolygonSeries());
+        s4.name = "Alto";
+        s4.useGeodata = true;
+        s4.include = s4_range;
+        s4.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range4 );
+        s4.fill = am4core.color( ColorPalette.Blue_Grey[0].Range4 );
+
+        var pts4 = s4.mapPolygons.template;
+        pts4.stroke = am4core.color("rgba(240, 240, 240, 0.4)");
+
+        /* 5to color */
+        var s5 = chart.series.push(new am4maps.MapPolygonSeries());
+        s5.name = "Muy alto";
+        s5.useGeodata = true;
+        s5.include = s5_range;
+        s5.mapPolygons.template.fill = am4core.color( ColorPalette.Blue_Grey[0].Range5 );
+        s5.fill = am4core.color( ColorPalette.Blue_Grey[0].Range5 );
+
+        var pts5 = s5.mapPolygons.template;
+        pts5.stroke = am4core.color("rgba(240, 240, 240, 0.4)");
+
 
         chart.legend = new am4maps.Legend();
         chart.legend.position = "right";
@@ -2622,35 +2650,11 @@
             $('#mapa_guanajuato').empty();
             $('.title-map').text('Grado de rezago social, según municipio, 2020');
             $('.notas-datos').css('color', 'white');
-//            $('.nombre-municipios').children().addClass('black-text');
+            $('.nombre-municipios').children().addClass('black-text');
 
-            $('.label-Xichu').addClass('white-text');
-            $('.label-Atarjea').addClass('white-text');
-            $('.label-TierraBlanca').addClass('white-text');
-            $('.label-Ocampo').addClass('white-text');
-            $('.label-SanFelipe').addClass('white-text');
-            $('.label-SanDiegoDeLaUnion').addClass('white-text');
-            $('.label-SanLuisDeLaPaz').addClass('white-text');
-            $('.label-Victoria').addClass('white-text');
-            $('.label-SantaCatarina').addClass('white-text');
-            $('.label-DoctorMora').addClass('white-text');
-            $('.label-DoloresHidalgo').addClass('white-text');
-            $('.label-SanMiguelDeAllende').addClass('white-text');
-            $('.label-Comonfort').addClass('white-text');
-            $('.label-ApaseoElAlto').addClass('white-text');
-            $('.label-SantaCruzDeJuventinoRosas').addClass('white-text');
-            $('.label-Tarimoro').addClass('white-text');
-            $('.label-Jerecuaro').addClass('white-text');
-            $('.label-Coroneo').addClass('white-text');
-            $('.label-Romita').addClass('white-text');
-            $('.label-ManuelDoblado').addClass('white-text');
-            $('.label-Cueramaro').addClass('white-text');
-            $('.label-Penjamo').addClass('white-text');
-            $('.label-Abasolo').addClass('white-text');
-            $('.label-Huanimaro').addClass('white-text');
-            $('.label-PuebloNuevo').addClass('white-text');
-            $('.label-ValleDeSantiago').addClass('white-text');
-            $('.label-Yuriria').addClass('white-text');
+            $('.label-Xichu').removeClass('black-text').addClass('white-text');
+            $('.label-Atarjea').removeClass('black-text').addClass('white-text');
+            $('.label-TierraBlanca').removeClass('black-text').addClass('white-text');
 
             Mapa_RezagoSocial();
         }
